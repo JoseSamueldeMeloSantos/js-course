@@ -33,3 +33,9 @@ let nome2 = "João";
 
 console.log(nome1); // João
 console.log(nome2); // Maria
+
+//O operador ...rest coleta os valores restantes do array após os elementos que você desestruturou.
+//const [a, b, ...resto] = [1, 2, 3, 4, 5];
+// a = 1
+// b = 2
+// resto = [3, 4, 5]
