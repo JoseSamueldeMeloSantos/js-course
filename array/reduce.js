@@ -5,7 +5,7 @@
     obs:
         -percorre todo o array reduzindo o elemento
         -retorna um unico elemento
-        -recebe uma func callback como parametro + um valor inicial
+        -recebe uma func callback como parametro + um valor inicial(opcional)
         -a func callback pode determinar como parametro 
             um acumulador, elementoAtual, indice, array do array em questão
 
