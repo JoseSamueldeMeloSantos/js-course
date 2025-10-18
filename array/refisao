@@ -32,7 +32,14 @@ alunos instanceof Array
 delete alunos[1]
 
 //usando construtor na criação
-let carros = new Array('fiat', 'chevolet', 'BID')
+let carros = new Array('fiat', 'chevolet', 'BID', 'bulgati')
 
 //apontando outra variavel pra outro array(referencia)
 let carroluxo = carros//oque fizer em um acontece no outro
+
+//para fatiar um array
+metadeCarros = carros.slice(0,3)
+console.log(metadeCarros)
+
+//para transformar um array em uma string
+carros.join()
