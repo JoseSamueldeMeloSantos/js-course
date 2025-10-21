@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!--todos os componentes html extendem de document-->
+    <h1 id="titulo">titulo</h1>
+    <p>paragrafo parte em <i>italico</i></p>
+
+    <script>
+        //para pegar um componente extendido no document
+        //é possivel pegar de outras formas tbm(classe,tag ,....)
+        let titulo = document.getElementById("titulo");
+        
+        //para pegar o texto e alterar ele 
+        titulo.textContent = "titulo alterado";
+    </script>
+</body>
+</html>
