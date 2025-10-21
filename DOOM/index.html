@@ -12,6 +12,13 @@
     <h1 id="titulo">titulo</h1>
     <p id="paragrafo">paragrafo parte em <i>italico</i></p>
 
+    <h2>Lista Tarefas</h2>
+    <ol id="listaTarefas">
+        <li>estudar</li>
+        <li>dormir</li>
+        <li>jogar</li>
+    </ol>
+
     <input type="text" name="text" id="user" value="valor preenchido">
 
 
@@ -37,9 +44,14 @@
 
         innerHTML => possivel adicionar novas tags via string 
         */
-
         let paragrafo = document.getElementById("paragrafo");
         paragrafo.innerHTML = "paragrafo <b> Bold </b>"
-    </script>
+        
+        /*adicionando conteudo via js sem substituir*/
+        const lista = document.getElementById("listaTarefas");
+        let novaTarefa = "Aplicar a vagas de emprego";
+
+        lista.innerHTML += `<li>${novaTarefa}<li>`;
+   </script>
 </body>
 </html>
