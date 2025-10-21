@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
+    <!-- defer => diz para o codigo só interpretar o codigo após o leitura de todo html-->
+    <!--<script defer src=""></script>-->
 </head>
 <body>
     <!--todos os componentes html extendem de document-->
     <h1 id="titulo">titulo</h1>
     <p>paragrafo parte em <i>italico</i></p>
+
+    <input type="text" name="text" id="user" value="valor preenchido">
+
 
     <script>
         //para pegar um componente extendido no document
@@ -16,6 +22,13 @@
         
         //para pegar o texto e alterar ele 
         titulo.textContent = "titulo alterado";
+
+        let user = document.getElementById("user");
+
+        //para pegar o value do input e alterar ele 
+        user.value = "testando";
+
+        console.log(user.value)
     </script>
 </body>
 </html>
