@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Simples de Seleção DOM</title>
+</head>
+<body>
+    <h1 id="titulo">Título</h1>
+
+    <p class="texto">Parágrafo 1</p>
+    <p class="texto">Parágrafo 2</p>
+
+    <div>
+        <span>Span 1</span>
+        <span>Span 2</span>
+    </div>
+
+    <script>
+        // 1. getElementById - seleciona pelo ID
+        const titulo = document.getElementById("titulo");
+        titulo.textContent = "Selecionado com getElementById";
+
+        // 2. getElementsByClassName - seleciona pela classe
+        const paragrafos = document.getElementsByClassName("texto");
+        paragrafos[0].textContent = "Selecionado com getElementsByClassName";
+
+        // 3. getElementsByTagName - seleciona pela tag
+        const spans = document.getElementsByTagName("span");
+        spans[0].textContent = "Selecionado com getElementsByTagName";
+
+        // 4. querySelector - seleciona o primeiro que combina com o seletor(sempre irá retornar apenas 1 elemento)
+        // possivel colocar coisas como ".texto b",qualquer seletor css
+        const primeiroParagrafo = document.querySelector(".texto");
+        primeiroParagrafo.textContent += " (querySelector)";
+
+        // 5. querySelectorAll - seleciona todos que combinam com o seletor
+        const todosParagrafos = document.querySelectorAll(".texto");
+        todosParagrafos[1].textContent = "Selecionado com querySelectorAll";
+    </script>
+</body>
+</html>
