@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criando toda a estrutura DOM com JavaScript</title>
+</head>
+<body>
+  <!-- Nada aqui! Tudo será criado via JavaScript -->
+  <script>
+    // ============================================================
+    // 🧱 ETAPA 1: CRIAR A BASE DO DOM
+    // ============================================================
+    // Vamos criar uma página com:
+    // <header>, <main>, <footer>
+    // Dentro do main terá uma seção com título, texto e botão.
+
+    const header = document.createElement("header");
+    const main = document.createElement("main");
+    const footer = document.createElement("footer");
+
+    // ============================================================
+    // 🖌️ ETAPA 2: ESTILIZAR OS ELEMENTOS
+    // ============================================================
+    document.body.style.margin = "0";
+    document.body.style.fontFamily = "Arial, sans-serif";
+    document.body.style.background = "#f4f4f9";
+
+    header.style.background = "#4CAF50";
+    header.style.color = "white";
+    header.style.padding = "20px";
+    header.style.textAlign = "center";
+
+    main.style.padding = "20px";
+    footer.style.background = "#333";
+    footer.style.color = "white";
+    footer.style.textAlign = "center";
+    footer.style.padding = "10px";
+
+    // ============================================================
+    // 🧩 ETAPA 3: ADICIONAR CONTEÚDO
+    // ============================================================
+    header.textContent = "🌿 Site criado 100% via DOM";
+
+    const section = document.createElement("section");
+    const titulo = document.createElement("h2");
+    const texto = document.createElement("p");
+    const botao = document.createElement("button");
+
+    titulo.textContent = "Bem-vindo ao DOM!";
+    texto.textContent = "Este conteúdo foi criado dinamicamente com JavaScript, sem HTML direto.";
+    botao.textContent = "Clique para mudar a cor";
+
+    // ------------------------------------------------------------
+    // Adicionando classe e atributos
+    botao.className = "botao-mudar";
+    botao.setAttribute("title", "Clique e veja o que acontece!");
+
+    // ------------------------------------------------------------
+    // Estilizando o botão
+    botao.style.padding = "10px 20px";
+    botao.style.background = "#4CAF50";
+    botao.style.color = "white";
+    botao.style.border = "none";
+    botao.style.borderRadius = "8px";
+    botao.style.cursor = "pointer";
+    botao.style.transition = "0.3s";
+
+    botao.addEventListener("mouseover", () => botao.style.background = "#45a049");
+    botao.addEventListener("mouseout", () => botao.style.background = "#4CAF50");
+
+    // ============================================================
+    // 🧠 ETAPA 4: MONTAR A ESTRUTURA (ANINHAR ELEMENTOS)
+    // ============================================================
+    section.appendChild(titulo);
+    section.appendChild(texto);
+    section.appendChild(botao);
+    main.appendChild(section);
+
+    // ============================================================
+    // 🧮 ETAPA 5: EVENTO DE INTERAÇÃO
+    // ============================================================
+    botao.addEventListener("click", () => {
+      // Troca aleatoriamente a cor de fundo do body
+      const cores = ["#FFB6C1", "#87CEEB", "#98FB98", "#FFD700", "#DDA0DD"];
+      const aleatoria = cores[Math.floor(Math.random() * cores.length)];
+      document.body.style.background = aleatoria;
+    });
+
+    // ============================================================
+    // 🧱 ETAPA 6: ADICIONAR AO BODY
+    // ============================================================
+    footer.textContent = "© 2025 - DOM criado dinamicamente por Samuel :)";
+
+    document.body.appendChild(header);
+    document.body.appendChild(main);
+    document.body.appendChild(footer);
+
+    // ============================================================
+    // 📘 EXPLICAÇÃO
+    // ============================================================
+    // 1️⃣ createElement(tag)  → cria uma nova tag
+    // 2️⃣ textContent         → define o texto interno
+    // 3️⃣ setAttribute()      → define atributos (ex: title, id, class)
+    // 4️⃣ appendChild()       → coloca um elemento dentro de outro
+    // 5️⃣ style.propriedade   → aplica CSS direto via JS
+    // 6️⃣ addEventListener()  → adiciona eventos (ex: clique)
+    // ============================================================
+  </script>
+</body>
+</html>
