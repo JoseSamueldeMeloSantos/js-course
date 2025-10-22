@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo onblur e propriedades HTML</title>
+</head>
+<body>
+
+  <h2>🧠 Exemplo simples de onblur + propriedades</h2>
+
+  <!-- Campo de texto -->
+  <input 
+    id="nome" 
+    type="text" 
+    placeholder="Digite seu nome"
+    onblur="verificarNome()"
+  >
+
+  <p id="mensagem"></p>
+
+<script>
+
+    /**
+     * 
+     *  algumas propriedades são escritas difentes no JS por causa de conversões 
+     *  ou incompatibilidade de palavras chaves 
+     */
+    
+    // ========================================================
+    // 🧩 O QUE É onblur?
+    // ========================================================
+    // O evento 'onblur' é disparado quando um elemento
+    // PERDE o foco — ou seja, quando o usuário clica fora
+    // de um campo depois de digitar algo.
+    //
+    // Exemplo:
+    // <input onblur="minhaFuncao()">
+    // ========================================================
+
+    function verificarNome() {
+      // Acessando o input e o parágrafo
+      const inputNome = document.getElementById("nome");
+      const msg = document.getElementById("mensagem");
+
+      // ----------------------------------------------------
+      // Acessando propriedades do elemento
+      // ----------------------------------------------------
+      // .value → texto digitado
+      // .placeholder → texto de dica
+      // .disabled → desativa o campo (true/false)
+      // .required → torna obrigatório (true/false)
+      // ----------------------------------------------------
+
+      // Se o campo estiver vazio
+      if (inputNome.value.trim() === "") {
+        msg.textContent = "⚠️ O campo não pode ficar vazio!";
+        msg.style.color = "red";
+
+        // Ativando propriedades
+        inputNome.required = true;   // torna obrigatório
+        inputNome.placeholder = "Campo obrigatório!"; // muda a dica
+      } else {
+        msg.textContent = `Olá, ${inputNome.value}!`;
+        msg.style.color = "green";
+
+        // Desativando propriedades
+        inputNome.required = false; // remove obrigatoriedade
+        inputNome.placeholder = "Digite seu nome"; // restaura dica
+      }
+    }
+
+    // ========================================================
+    // 💡 DICA EXTRA:
+    // Também é possível usar JS puro:
+    // elemento.addEventListener("blur", funcao);
+    //
+    // Exemplo:
+    // const campo = document.getElementById("nome");
+    // campo.addEventListener("blur", verificarNome);
+    // ========================================================
+  </script>
+</body>
+</html>
