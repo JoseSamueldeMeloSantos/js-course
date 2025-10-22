@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo parentElement, children e style</title>
+</head>
+<body>
+    <div id="container">
+        <p>Parágrafo 1</p>
+        <p>Parágrafo 2</p>
+        <p>Parágrafo 3</p>
+    </div>
+
+    <script>
+        // Seleciona o container
+        const container = document.getElementById("container");
+
+        // 1. children - seleciona todos os elementos filhos do container
+        const filhos = container.children;
+        console.log("Filhos do container:", filhos);
+
+        // Altera o estilo do primeiro filho
+        filhos[0].style.color = "red";
+        filhos[0].style.fontWeight = "bold";
+        filhos[0].textContent = "Primeiro filho modificado com children e style";
+
+        // 2. parentElement - seleciona o elemento pai do primeiro filho
+        const pai = filhos[0].parentElement;
+        console.log("Elemento pai do primeiro filho:", pai);
+
+        // Modifica o estilo do container usando parentElement
+        pai.style.border = "2px solid blue";
+        pai.style.padding = "10px";
+    </script>
+</body>
+</html>
