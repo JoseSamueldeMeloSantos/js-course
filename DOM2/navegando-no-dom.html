@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diferença entre HTMLCollection, NodeList e propriedades do DOM</title>
+</head>
+<body>
+  <h2>🎯 Estudando DOM na prática</h2>
+
+  <div class="container">
+    <p>Primeiro parágrafo</p>
+    <p>Segundo parágrafo</p>
+    <p>Terceiro parágrafo</p>
+  </div>
+
+  <script>
+    // ============================================================
+    // 🧩 OUTRAS PROPRIEDADES IMPORTANTES DO DOM
+    // ============================================================
+
+    // document.body → representa TODO o corpo do documento
+    console.log("document.body:", document.body);
+
+    // parentElement → retorna o elemento pai (ignora nós de texto)
+    const primeiroParagrafo = document.querySelector("p");
+    console.log("parentElement:", primeiroParagrafo.parentElement);
+
+    // parentNode → parecido, mas pode retornar qualquer nó (inclusive texto)
+    console.log("parentNode:", primeiroParagrafo.parentNode);
+
+    // nextSibling → pega o PRÓXIMO NÓ (pode ser texto, quebra de linha etc.)
+    console.log("nextSibling:", primeiroParagrafo.nextSibling);
+
+    // nextElementSibling → pega o PRÓXIMO ELEMENTO (ignora espaços e textos)
+    console.log("nextElementSibling:", primeiroParagrafo.nextElementSibling);
+
+    // 🔎 DICA:
+    // Quando você quiser navegar entre ELEMENTOS do HTML (como tags),
+    // use sempre *Element* no nome → parentElement, nextElementSibling etc.
+  </script>
+</body>
+</html>
