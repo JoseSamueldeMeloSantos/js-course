@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLCollection vs NodeList</title>
+</head>
+<body>
+  <h2>📘 Diferença entre HTMLCollection e NodeList</h2>
+
+  <div class="caixa">Caixa 1</div>
+  <div class="caixa">Caixa 2</div>
+  <div class="caixa">Caixa 3</div>
+
+  <script>
+    // ==========================================================
+    // 🔹 HTMLCollection e NodeList são "listas de elementos"
+    // mas têm diferenças importantes:
+    // ==========================================================
+
+    // 1️⃣ HTMLCollection → retorna uma coleção *viva*
+    // Significa que se novos elementos forem adicionados,
+    // a lista é atualizada automaticamente.
+    // Geralmente vem de métodos como:
+    //    getElementsByTagName()
+    //    getElementsByClassName()
+    const colecaoHTML = document.getElementsByClassName("caixa");
+    console.log("HTMLCollection:", colecaoHTML);
+
+    // 2️⃣ NodeList → retorna uma lista *estática*
+    // Ela NÃO se atualiza automaticamente se o DOM mudar.
+    // Geralmente vem de:
+    //    querySelectorAll()
+    const listaNodos = document.querySelectorAll(".caixa");
+    console.log("NodeList:", listaNodos);
+  </script>
+</body>
+</html>
