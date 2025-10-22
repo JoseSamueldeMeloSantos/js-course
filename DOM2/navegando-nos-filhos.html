@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entendendo filhos e nós do DOM</title>
+</head>
+<body>
+
+  <h2>👨‍👧 Explorando filhos no DOM</h2>
+
+  <div id="caixa">
+    <p>Primeiro</p>
+    <p>Segundo</p>
+    <p>Terceiro</p>
+  </div>
+
+  <script>
+    // Pegando o elemento pai
+    const caixa = document.getElementById("caixa");
+
+    // =============================================================
+    // 🧩 childNodes vs children
+    // =============================================================
+    // childNodes → retorna TODOS os filhos (inclusive textos, espaços e quebras de linha)
+    // children   → retorna apenas ELEMENTOS (tags)
+    // =============================================================
+
+    console.log("childNodes (todos os nós):", caixa.childNodes);
+    console.log("children (somente elementos):", caixa.children);
+
+    // =============================================================
+    // 🔹 firstChild e lastChild
+    // =============================================================
+    // firstChild → retorna o primeiro nó filho (pode ser texto!)
+    // lastChild  → retorna o último nó filho (também pode ser texto!)
+    // =============================================================
+
+    console.log("firstChild:", caixa.firstChild);
+    console.log("lastChild:", caixa.lastChild);
+
+    // =============================================================
+    // 🔸 firstElementChild e lastElementChild
+    // =============================================================
+    // Esses ignoram textos e pegam SOMENTE elementos HTML
+    // =============================================================
+
+    console.log("firstElementChild:", caixa.firstElementChild);
+    console.log("lastElementChild:", caixa.lastElementChild);
+
+    // =============================================================
+    // 🧠 hasChildNodes()
+    // =============================================================
+    // Verifica se o elemento TEM filhos (retorna true ou false)
+    // =============================================================
+
+    console.log("A caixa tem filhos?", caixa.hasChildNodes());
+
+    // =============================================================
+    // 💡 Dica prática
+    // =============================================================
+    // Se quiser acessar um filho específico:
+    // caixa.children[0] → primeiro <p>
+    // caixa.children[1] → segundo <p>
+    // caixa.children.length → quantidade de filhos
+    // =============================================================
+
+    console.log("Primeiro filho via children[0]:", caixa.children[0].textContent);
+    console.log("Quantidade de filhos:", caixa.children.length);
+  </script>
+</body>
+</html>
