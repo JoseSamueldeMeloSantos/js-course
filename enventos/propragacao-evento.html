@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Propagação de eventos (Captura e Bolha)</title>
+  <style>
+    /* Vamos usar 3 caixas para visualizar a propagação */
+    .caixa {
+      padding: 30px;
+      margin: 10px;
+      border: 2px solid black;
+    }
+    .externa { background-color: lightcoral; }
+    .media { background-color: lightgreen; }
+    .interna { background-color: lightblue; }
+  </style>
+</head>
+<body>
+
+  <!-- Estrutura aninhada (uma dentro da outra) -->
+  <div class="caixa externa">
+    EXTERNA
+    <div class="caixa media">
+      MÉDIA
+      <div class="caixa interna">INTERNA</div>
+    </div>
+  </div>
+
+  <script>
+    // ============================================================
+    // 📘 CONCEITO: Propagação de eventos
+    // ============================================================
+    // Quando você clica em um elemento dentro de outro,
+    // o evento "sobe" ou "desce" pela árvore do DOM.
+    //
+    // Existem 2 fases principais:
+    // 1️⃣ CAPTURA (capturing phase) → o evento vem de fora pra dentro
+    // 2️⃣ BOLHA (bubbling phase) → o evento vai de dentro pra fora (padrão)
+
+    // Vamos pegar as três caixas:
+    const externa = document.querySelector('.externa');
+    const media = document.querySelector('.media');
+    const interna = document.querySelector('.interna');
+
+    // ============================================================
+    // 🟢 Exemplo 1: Fase de bolha (padrão)
+    // ============================================================
+    // Quando você clica na DIV interna,
+    // o evento "sobe" (bolha) para as DIVs de fora.
+    interna.addEventListener('click', function() {
+      alert('Clique na DIV INTERNA (fase de bolha)');
+    });
+
+    media.addEventListener('click', function() {
+      alert('Clique chegou na DIV MÉDIA (fase de bolha)');
+    });
+
+    externa.addEventListener('click', function() {
+      alert('Clique chegou na DIV EXTERNA (fase de bolha)');
+    });
+
+    // ============================================================
+    // 🟡 Exemplo 2: Fase de CAPTURA
+    // ============================================================
+    // Para ouvir o evento na fase de captura,
+    // passamos "true" como terceiro argumento no addEventListener:
+    externa.addEventListener('click', function() {
+      console.log('Captura EXTERNA');
+    }, true);
+
+    media.addEventListener('click', function() {
+      console.log('Captura MÉDIA');
+    }, true);
+
+    interna.addEventListener('click', function() {
+      console.log('Captura INTERNA');
+    }, true);
+
+    // Quando clicar na interna:
+    // A ordem será:
+    // 1️⃣ externa (captura)
+    // 2️⃣ media (captura)
+    // 3️⃣ interna (captura)
+    // 4️⃣ interna (bolha)
+    // 5️⃣ media (bolha)
+    // 6️⃣ externa (bolha)
+
+    // ============================================================
+    // 🔴 Exemplo 3: Parando a propagação
+    // ============================================================
+    // Podemos impedir que o evento "suba" ou "desça" usando:
+    // event.stopPropagation()
+
+    interna.addEventListener('click', function(event) {
+      event.stopPropagation(); // impede que o clique continue subindo
+      console.log('Propagação parada na DIV INTERNA');
+    });
+  </script>
+</body>
+</html>

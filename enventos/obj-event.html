@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Explicação do objeto event</title>
+  <style>
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin: 10px;
+    }
+
+    .caixa {
+      width: 200px;
+      height: 200px;
+      background: lightblue;
+      text-align: center;
+      line-height: 200px;
+      margin: 10px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Entendendo o objeto <code>event</code></h2>
+
+  <button id="botao">Clique em mim</button>
+  <div class="caixa" id="caixa">Passe o mouse</div>
+
+  <script>
+    // ==========================================================
+    // 📘 O que é o "event"?
+    // ==========================================================
+    // O "event" (ou "e") é um objeto AUTOMÁTICO que o navegador
+    // envia para a função quando um evento acontece.
+    //
+    // Ele contém informações sobre o evento ocorrido,
+    // como o tipo, o alvo, as coordenadas do mouse, teclas, etc.
+
+    const botao = document.getElementById('botao');
+    const caixa = document.getElementById('caixa');
+
+    // ==========================================================
+    // 🟢 Exemplo 1: evento de clique
+    // ==========================================================
+    botao.addEventListener('click', function(event) {
+      // 'event' contém vários dados sobre o clique
+      console.log('Objeto event completo:', event); // mostra tudo no console
+
+      // event.type → tipo do evento
+      console.log('Tipo do evento:', event.type); // "click"
+
+      // event.target → elemento que recebeu o evento
+      console.log('Elemento alvo:', event.target); // o botão
+
+      // event.timeStamp → tempo (em ms) desde que a página foi carregada
+      console.log('Tempo desde o carregamento:', event.timeStamp);
+
+      // Vamos usar algumas dessas infos na tela:
+      botao.textContent = `Evento: ${event.type}`;
+      botao.style.backgroundColor = 'lightgreen';
+    });
+
+    // ==========================================================
+    // 🟣 Exemplo 2: evento de movimento do mouse
+    // ==========================================================
+    caixa.addEventListener('mousemove', function(e) {
+      // event.clientX e event.clientY → posição do mouse na tela
+      caixa.textContent = `x: ${e.clientX}, y: ${e.clientY}`;
+      caixa.style.backgroundColor = 'lightblue';
+    });
+
+    caixa.addEventListener('mouseleave', function(e) {
+      // Quando o mouse sai da caixa
+      caixa.textContent = 'Passe o mouse';
+      caixa.style.backgroundColor = 'lightgray';
+    });
+
+    // ==========================================================
+    // 🔵 Exemplo 3: evento de teclado (keydown)
+    // ==========================================================
+    document.addEventListener('keydown', function(e) {
+      // e.key → tecla pressionada
+      // e.code → código físico da tecla no teclado
+      console.log(`Tecla pressionada: ${e.key} (code: ${e.code})`);
+
+      // Se o usuário apertar "Enter"
+      if (e.key === 'Enter') {
+        alert('Você pressionou ENTER!');
+      }
+    });
+  </script>
+</body>
+</html>

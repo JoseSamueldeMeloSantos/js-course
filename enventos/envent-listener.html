@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Explicação detalhada do addEventListener</title>
+</head>
+<body>
+
+  <!-- Um botão na tela -->
+  <button id="botao">Clique em mim</button>
+
+  <!-- Um parágrafo vazio que receberá o texto depois -->
+  <p id="mensagem"></p>
+
+  <script>
+    // =====================================================================
+    // 1️⃣ Pegamos o elemento do HTML pelo ID
+    // =====================================================================
+    const botao = document.getElementById('botao');      // pega o <button>
+    const mensagem = document.getElementById('mensagem'); // pega o <p>
+
+    // =====================================================================
+    // 2️⃣ O que é addEventListener?
+    // =====================================================================
+    // É um método que "ouve" um evento em um elemento HTML.
+    // Quando esse evento acontece, ele executa uma função.
+    //
+    // Estrutura:
+    // elemento.addEventListener('tipoDoEvento', funçãoQueSeráExecutada);
+
+    // =====================================================================
+    // 3️⃣ Exemplo prático: evento de clique
+    // =====================================================================
+    botao.addEventListener('click', function() {
+      // Essa função será executada sempre que o botão for clicado
+
+      // muda o texto do parágrafo
+      mensagem.textContent = 'Você clicou no botão!';
+
+      // muda a cor do texto
+      mensagem.style.color = 'blue';
+
+      // muda o tamanho da fonte
+      mensagem.style.fontSize = '20px';
+    });
+
+    // =====================================================================
+    // 4️⃣ Podemos adicionar vários eventos no mesmo elemento
+    // =====================================================================
+    botao.addEventListener('mouseover', function() {
+      // Esse evento acontece quando o mouse passa por cima do botão
+      botao.style.backgroundColor = 'lightgreen';
+    });
+
+    botao.addEventListener('mouseout', function() {
+      // Esse evento acontece quando o mouse sai de cima do botão
+      botao.style.backgroundColor = '';
+    });
+
+    // =====================================================================
+    // 5️⃣ Também é possível usar uma função separada
+    // =====================================================================
+    function mostrarAlerta() {
+      alert('Esse é outro evento: duplo clique!');
+    }
+
+    // Aqui o evento é "dblclick" (duplo clique)
+    botao.addEventListener('dblclick', mostrarAlerta);
+  </script>
+
+</body>
+</html>

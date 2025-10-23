@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>target vs currentTarget</title>
+  <style>
+    .pai {
+      padding: 30px;
+      background-color: lightcoral;
+      margin: 10px;
+    }
+    .filho {
+      padding: 20px;
+      background-color: lightblue;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pai" id="pai">
+    PAI
+    <div class="filho" id="filho">FILHO</div>
+  </div>
+
+  <script>
+    const pai = document.getElementById('pai');
+    const filho = document.getElementById('filho');
+
+    // ==========================================================
+    // Exemplo de clique no FILHO, listener no PAI
+    // ==========================================================
+    pai.addEventListener('click', function(event) {
+      // event.target → o elemento onde o evento **realmente aconteceu**
+      console.log('event.target:', event.target);
+      
+      // event.currentTarget → o elemento onde o listener está **registrado**
+      console.log('event.currentTarget:', event.currentTarget);
+
+      // Vamos mostrar visualmente na tela
+      alert(
+        'Clique detectado!\n' +
+        'target: ' + event.target.id + '\n' +
+        'currentTarget: ' + event.currentTarget.id
+      );
+    });
+  </script>
+
+</body>
+</html>

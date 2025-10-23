@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo de Delegação de Eventos</title>
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      margin: 5px 0;
+      background: lightblue;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Delegação de Eventos</h2>
+
+  <ul id="lista">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <button id="adicionar">Adicionar Item</button>
+
+  <script>
+    // ==========================================================
+    // 📘 O que é Delegação de Eventos?
+    // ==========================================================
+    // É uma técnica onde você coloca **um único event listener** em um elemento
+    // pai (container), em vez de adicionar um listener em cada filho.
+    //
+    // Quando o evento acontece em um filho, ele "sobe" (bubble) até o pai,
+    // e podemos capturá-lo ali.
+
+    const lista = document.getElementById('lista');
+    const botao = document.getElementById('adicionar');
+
+    // ==========================================================
+    // 🟢 Usando delegação de eventos
+    // ==========================================================
+    lista.addEventListener('click', function(event) {
+      // event.target → o elemento que realmente foi clicado
+      if (event.target.tagName === 'LI') {
+        alert('Você clicou em: ' + event.target.textContent);
+        event.target.style.backgroundColor = 'lightgreen';
+      }
+    });
+
+    // ==========================================================
+    // 🔵 Adicionando novos itens dinamicamente
+    // ==========================================================
+    let contador = 4;
+    botao.addEventListener('click', function() {
+      const novoItem = document.createElement('li');
+      novoItem.textContent = 'Item ' + contador;
+      lista.appendChild(novoItem);
+      contador++;
+    });
+
+    // ✅ Mesmo os novos itens criados dinamicamente
+    // serão capturados pelo listener do pai "ul"
+  </script>
+</body>
+</html>
