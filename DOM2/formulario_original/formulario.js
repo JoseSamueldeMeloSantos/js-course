@@ -35,6 +35,7 @@
         // Função que esconde a mensagem de erro
         function hideErrorMessage() {
             console.log("clicado close")
+            //quando for lidar com classe use o classlist
             feedbackMessage.classList.remove("show") // Remove a classe de exibição
 
             // Remove os event listeners para evitar duplicação
