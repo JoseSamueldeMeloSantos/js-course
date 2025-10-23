@@ -19,6 +19,9 @@ function Pessoa(nome, idade) {//uso do maiusculo
   this.apresentar = function() {
     console.log(`Olá! Meu nome é ${this.nome} e tenho ${this.idade} anos.`);
   };
+
+  //para cancelar alteracao no obj 
+  Object.freeze(this)
 }
                //uso do new
 const pessoa1 = new Pessoa("Samuel", 20);
