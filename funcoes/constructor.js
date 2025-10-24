@@ -22,6 +22,16 @@ function Pessoa(nome, idade) {//uso do maiusculo
 
   //para cancelar alteracao no obj 
   Object.freeze(this)
+
+  //dentro de ruturn pq e uma funcao
+  return {
+    get nome() {
+      return nome
+    },
+    set nome(nome) {
+      this.nome = nome
+    }
+  }
 }
                //uso do new
 const pessoa1 = new Pessoa("Samuel", 20);
